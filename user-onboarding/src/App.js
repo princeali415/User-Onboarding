@@ -4,6 +4,7 @@ import UserForm from '../src/components/user_form'
 import axios from 'axios'
 import * as yup from 'yup'
 import schema from '../src/validation/schema'
+import User from '../src/components/user'
 
 const initialFormValues = {
   name: '',
@@ -45,6 +46,8 @@ function App() {
     axios.post('https://reqres.in/api/users', newUser)
     .then(res => {
       setUser([...user, res.data])
+      console.log(res.data)
+      
       setFormValues(initialFormValues)
     })
     .catch(err => {
@@ -80,9 +83,9 @@ const inputChange = (name, value) => {
   //submit form function 
   const formSubmit = () => {
     const newUser = {
-      name: formValues.name,
-      email: formValues.email,
-      password: formValues.password,
+      name: formValues.name.trim(),
+      email: formValues.email.trim(),
+      password: formValues.password.trim(),
       terms_of_service: formValues.terms_of_service,
     }
     postUser(newUser)
@@ -114,6 +117,9 @@ const inputChange = (name, value) => {
       errors={formErrors}
       />
 
+    {user.map((usr) => {
+      return <User key={user.id}details={usr} />
+    })}
     </div>
   );
 }

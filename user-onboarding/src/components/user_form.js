@@ -10,7 +10,7 @@ const onSubmit = evt => {
 
 const onChange = (evt) => {
     const { name, value, type, checked } = evt.target;
-    const valueToUse = type === "checkbox" ? checked : value
+    const valueToUse = type === "checkbox" ? checked : value;
     change(name, valueToUse)
 }
 
@@ -49,7 +49,7 @@ const onChange = (evt) => {
                     value={values.email}
                     onChange={onChange}
                     name="email"
-                    type="text"
+                    type="email"
                 />
                 </label>
                 <label>
