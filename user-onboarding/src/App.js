@@ -118,7 +118,7 @@ const inputChange = (name, value) => {
       />
 
     {user.map((usr) => {
-      return <User key={user.id}details={usr} />
+      return <User key={user.id} details={usr} />
     })}
     </div>
   );
